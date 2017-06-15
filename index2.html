@@ -1,0 +1,446 @@
+<html>
+<head>
+  <title>A Leaflet map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
+  <link rel="stylesheet" href="./routing/leaflet-routing-machine.css" />
+
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+  <script src="./routing/leaflet-routing-machine.js"></script>
+  <style type="text/css">
+    
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            height: 100%;
+            width: 100%;
+            font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+        .lorem {
+            font-style: italic;
+            color: #AAA;
+        }
+  </style>
+</head>
+<body>
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
+                <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+                <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+                <li><a href="https://github.com/Turbo87/sidebar-v2" role="tab" target="_blank"><i class="fa fa-github"></i></a></li>
+            </ul>
+
+            <ul role="tablist">
+                <li><a href="#settings" role="tab"><i class="fa fa-gear"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    sidebar-v2
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+
+                <p>A responsive sidebar for mapping libraries like <a href="http://leafletjs.com/">Leaflet</a> or <a href="http://openlayers.org/">OpenLayers</a>.</p>
+
+                <p class="lorem">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+
+                <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+            </div>
+
+            <div class="sidebar-pane" id="profile">
+                <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+        </div>
+    </div>
+
+  <div id="map" class="sidebar-map"></div>
+
+  <script src="./js/leaflet-sidebar.js"></script>
+
+  <script type="text/javascript">
+    // credits: https://github.com/turban/Leaflet.Mask
+    L.Mask = L.Polygon.extend({
+      options: {
+        stroke: false,
+        color: '#333',
+        fillOpacity: 0.9,
+        clickable: true,
+
+        outerBounds: new L.LatLngBounds([-180, -360], [90, 360])
+      },
+
+      initialize: function (latLngs, options) {
+            
+             var outerBoundsLatLngs = [
+          this.options.outerBounds.getSouthWest(),
+          this.options.outerBounds.getNorthWest(),
+          this.options.outerBounds.getNorthEast(),
+          this.options.outerBounds.getSouthEast()
+        ];
+            L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);  
+      },
+
+    });
+    L.mask = function (latLngs, options) {
+      return new L.Mask(latLngs, options);
+    };
+
+
+
+    // Polygon created with http://geojson.io/
+    var france = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+            [
+              [
+                -7.544351,
+                42.493775
+              ],
+              [
+                -7.529888,
+                42.488248
+              ],
+              [
+                -7.527916,
+                42.482835
+              ],
+              [
+                -7.529699,
+                42.479728
+              ],
+              [
+                -7.52184,
+                42.471295
+              ],
+              [
+                -7.521277,
+                42.468727
+              ],
+              [
+                -7.526606,
+                42.46926
+              ],
+              [
+                -7.515944,
+                42.461021
+              ],
+              [
+                -7.516441,
+                42.453908
+              ],
+              [
+                -7.510007,
+                42.447788
+              ],
+              [
+                -7.503707,
+                42.444867
+              ],
+              [
+                -7.505665,
+                42.440151
+              ],
+              [
+                -7.501832,
+                42.438396
+              ],
+              [
+                -7.496576,
+                42.438476
+              ],
+              [
+                -7.495762,
+                42.435123
+              ],
+              [
+                -7.485907,
+                42.436509
+              ],
+              [
+                -7.482334,
+                42.438357
+              ],
+              [
+                -7.464506,
+                42.439948
+              ],
+              [
+                -7.453049,
+                42.438145
+              ],
+              [
+                -7.457512,
+                42.429966
+              ],
+              [
+                -7.45799,
+                42.420799
+              ],
+              [
+                -7.447941,
+                42.412225
+              ],
+              [
+                -7.447367,
+                42.407024
+              ],
+              [
+                -7.448746,
+                42.407124
+              ],
+              [
+                -7.465671,
+                42.407138
+              ],
+              [
+                -7.470785,
+                42.403373
+              ],
+              [
+                -7.479549,
+                42.401203
+              ],
+              [
+                -7.500979,
+                42.388695
+              ],
+              [
+                -7.528322,
+                42.383843
+              ],
+              [
+                -7.540784,
+                42.384392
+              ],
+              [
+                -7.549354,
+                42.387004
+              ],
+              [
+                -7.565506,
+                42.401046
+              ],
+              [
+                -7.57465,
+                42.404831
+              ],
+              [
+                -7.595007,
+                42.396804
+              ],
+              [
+                -7.601191,
+                42.389846
+              ],
+              [
+                -7.616493,
+                42.38421
+              ],
+              [
+                -7.620007,
+                42.385445
+              ],
+              [
+                -7.624413,
+                42.392998
+              ],
+              [
+                -7.62736,
+                42.394732
+              ],
+              [
+                -7.630708,
+                42.406554
+              ],
+              [
+                -7.63899,
+                42.408975
+              ],
+              [
+                -7.647277,
+                42.413921
+              ],
+              [
+                -7.656772,
+                42.415149
+              ],
+              [
+                -7.661987,
+                42.423017
+              ],
+              [
+                -7.661205,
+                42.439178
+              ],
+              [
+                -7.659263,
+                42.439725
+              ],
+              [
+                -7.653613,
+                42.436965
+              ],
+              [
+                -7.649581,
+                42.439308
+              ],
+              [
+                -7.646525,
+                42.438904
+              ],
+              [
+                -7.644045,
+                42.442505
+              ],
+              [
+                -7.632579,
+                42.443944
+              ],
+              [
+                -7.632795,
+                42.448192
+              ],
+              [
+                -7.628568,
+                42.452668
+              ],
+              [
+                -7.629962,
+                42.458553
+              ],
+              [
+                -7.627574,
+                42.464253
+              ],
+              [
+                -7.61758,
+                42.474179
+              ],
+              [
+                -7.606278,
+                42.47561
+              ],
+              [
+                -7.599887,
+                42.483826
+              ],
+              [
+                -7.594178,
+                42.482757
+              ],
+              [
+                -7.585779,
+                42.488656
+              ],
+              [
+                -7.578841,
+                42.486629
+              ],
+              [
+                -7.573887,
+                42.493061
+              ],
+              [
+                -7.569394,
+                42.491176
+              ],
+              [
+                -7.567318,
+                42.493248
+              ],
+              [
+                -7.561057,
+                42.489782
+              ],
+              [
+                -7.556392,
+                42.490039
+              ],
+              [
+                -7.553429,
+                42.49364
+              ],
+              [
+                -7.547622,
+                42.497104
+              ],
+              [
+                -7.544351,
+                42.493775
+              ]
+            ]
+          ]
+          }
+        }
+      ]
+    };
+
+    var lat = 42.431862;
+    var lng =  -7.537178;
+    var zoom =  13;
+
+    var map = new L.Map('map');
+
+    var osmUrl='https://api.mapbox.com/styles/v1/eliasgago/cj3vo6pon0b532sohb06nus5r/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw';
+    var osmAttrib='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>';
+    var osm = new L.TileLayer(osmUrl, {minZoom: 3, maxZoom: 18, attribution: osmAttrib});
+    map.addLayer(osm);
+
+    map.setView(new L.LatLng(lat, lng), zoom);
+
+    // transform geojson coordinates into an array of L.LatLng
+    var coordinates = france.features[0].geometry.coordinates[0];
+    var latLngs = [];
+    for (i=0; i<coordinates.length; i++) {
+        latLngs.push(new L.LatLng(coordinates[i][1], coordinates[i][0]));
+    }
+
+    L.mask(latLngs).addTo(map);
+
+    
+    var sidebar = L.control.sidebar('sidebar').addTo(map);
+
+    var marker = L.marker([42.397951, -7.555044]).addTo(map);
+    // marker.bindPopup("<b>Miradoiro da Cividade!</b><br>Vaia vistas!");
+
+    marker.on('click', () => {
+      console.log('click');
+      sidebar.open('home');
+    });
+
+    function showRoute() {
+        L.Routing.control({
+          waypoints: [
+            L.latLng(42.393274, -7.614985),
+            L.latLng(42.397951, -7.555044)
+          ]
+        }).addTo(map);
+    }
+        
+
+  </script>
+</body>
+</html>

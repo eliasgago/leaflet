@@ -1,0 +1,148 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Proendos"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.586488723754883,
+          42.45246796368671
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "A Carqueixa"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.582583427429199,
+          42.439674178149424
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Arxemil"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.617902755737305,
+          42.43010880023282
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Santa Marta"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.582840919494629,
+          42.42820822018165
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Pinol"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.55335807800293,
+          42.411068721101195
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Lobios"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.530312538146973,
+          42.40755153486097
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Amandi"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.516107559204101,
+          42.39918554284503
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Doade"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.479457855224609,
+          42.415884728266256
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Gundivós"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.540998458862305,
+          42.44664141507344
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Canabal"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.586317062377929,
+          42.481655876368954
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Sober"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -7.5862741470336905,
+          42.46161835076553
+        ]
+      }
+    }
+  ]
+}

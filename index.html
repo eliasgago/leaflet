@@ -1,0 +1,170 @@
+<html>
+<head>
+  <title>A Leaflet map</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
+  <link rel="stylesheet" href="./css/flip.css" />
+  <link rel="stylesheet" href="./routing/leaflet-routing-machine.css" />
+
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
+
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+  <script src="./routing/leaflet-routing-machine.js"></script>
+  <style type="text/css">
+    
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        html, body, #map {
+            font-family: 'Raleway', sans-serif;
+            height: 100%;
+            width: 100%;
+            font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+        }
+        h1 {
+            font-family: 'Playfair Display', serif;
+        }
+        .lorem {
+            color: #AAA;
+        }
+  </style>
+</head>
+<body>
+    <div id="sidebar" class="sidebar collapsed">
+        <!-- Nav tabs -->
+        <div class="sidebar-tabs">
+            <ul role="tablist">
+                <li><a href="#home" role="tab"><i class="fa fa-camera"></i></a></li>
+                <li><a href="#profile" role="tab"><i class="fa fa-hotel"></i></a></li>
+                <li><a href="#messages" role="tab"><i class="fa fa-map-o"></i></a></li>
+            </ul>
+        </div>
+
+        <!-- Tab panes -->
+        <div class="sidebar-content">
+            <div class="sidebar-pane" id="home">
+                <h1 class="sidebar-header">
+                    Miradoiro de Cadeiras
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+
+                <img src="./img/miradoiros/cadeiras.jpg" width="100%">
+
+                <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
+
+                <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+            </div>
+
+            <div class="sidebar-pane" id="profile">
+                <div class="container">
+                    <div class="front">
+                        <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                        <ul>
+                            <li>
+                                <a href="#" class="link">Miradoiro de Santiorxo</a>
+                            </li>
+                            <li>
+                                <a href="#" class="link">Miradoiro de Cadeiras</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="back">
+                        <h1 class="sidebar-header">
+                            Miradoiro de Cadeiras
+                            <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                        </h1>
+
+                        <img src="./img/miradoiros/cadeiras.jpg" width="100%">
+
+                        <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
+
+                        <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+                        <p><a href="#" class="button_back">Volver</a></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-pane" id="messages">
+                <h1 class="sidebar-header">Messages<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+
+            <div class="sidebar-pane" id="settings">
+                <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+            </div>
+        </div>
+    </div>
+
+  <div id="map" class="sidebar-map"></div>
+
+  <script src="./js/leaflet-sidebar.js"></script>
+
+  <script type="text/javascript">
+    var map = L.map('map').setView([42.431862, -7.537178], 13);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/eliasgago/cj3yb3k3618zz2tnt1o3dzj1k/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw', {
+        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+        maxZoom: 18,
+        id: 'your.mapbox.project.id',
+        accessToken: 'pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw'
+    }).addTo(map);
+
+    var sidebar = L.control.sidebar('sidebar').addTo(map);
+
+    var myIcon = L.icon({
+        iconUrl: './img/view_icon.png',
+        iconSize: [40, 40],
+        iconAnchor: [20, 20],
+        popupAnchor: [-3, -76]
+    });
+
+    var myIcon2 = L.icon({
+        iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon-2x.png',
+        iconSize: [70, 95],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        shadowUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-shadow.png',
+        shadowSize: [68, 95],
+        shadowAnchor: [22, 94]
+    });
+
+    var marker = L.marker([42.397951, -7.555044]).addTo(map);
+    marker.setIcon(myIcon);
+
+    // marker.bindPopup("<b>Miradoiro da Cividade!</b><br>Vaia vistas!");
+
+    marker.on('click', () => {
+      console.log('click');
+      sidebar.open('home');
+    });
+
+    function showRoute() {
+        L.Routing.control({
+          waypoints: [
+            L.latLng(42.393274, -7.614985),
+            L.latLng(42.397951, -7.555044)
+          ]
+        }).addTo(map);
+    }
+
+    $(document).on("click", ".link", function () {
+        console.log('change');
+        $('.front').toggleClass('hover');
+        $('.back').toggleClass('hover');
+        console.log(marker);
+        marker.setIcon(myIcon2);
+    });
+
+    $(document).on("click", ".button_back", function () {
+        $('.front').toggleClass('hover');
+        $('.back').toggleClass('hover');
+        console.log(marker);
+        marker.setIcon(myIcon);
+    });
+
+  </script>
+</body>
+</html>
