@@ -6,6 +6,8 @@
   <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
   <link rel="stylesheet" href="./css/flip.css" />
   <link rel="stylesheet" href="./routing/leaflet-routing-machine.css" />
+  <link rel="stylesheet" type="text/css" href="./css/jcarousel.responsive.css">
+  <link rel="stylesheet" type="text/css" href="./css/lity.css">
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
 
@@ -13,6 +15,12 @@
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
   <script src="./routing/leaflet-routing-machine.js"></script>
+
+  <script type="text/javascript" src="./js/jcarousel.js"></script>
+  <script type="text/javascript" src="./js/jcarousel.responsive.js"></script>
+
+  <script type="text/javascript" src="./js/lity.js"></script>
+
   <style type="text/css">
     
         body {
@@ -40,6 +48,7 @@
             <ul role="tablist">
                 <li><a href="#home" role="tab"><i class="fa fa-camera"></i></a></li>
                 <li><a href="#profile" role="tab"><i class="fa fa-hotel"></i></a></li>
+                <li><a href="#wineries" role="tab"><i class="fa fa-glass"></i></a></li>
                 <li><a href="#messages" role="tab"><i class="fa fa-map-o"></i></a></li>
             </ul>
         </div>
@@ -57,6 +66,25 @@
                 <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
                 <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+
+                <div class="jcarousel-wrapper">
+                    <div class="jcarousel">
+                        <ul>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
+                            <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
+                        </ul>
+                    </div>
+
+                    <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                    <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                    <p class="jcarousel-pagination"></p>
+                </div>
+
             </div>
 
             <div class="sidebar-pane" id="profile">
@@ -83,6 +111,7 @@
                         <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
                         <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+
                         <p><a href="#" class="button_back">Volver</a></p>
                     </div>
                 </div>
@@ -131,15 +160,60 @@
         shadowAnchor: [22, 94]
     });
 
-    var marker = L.marker([42.397951, -7.555044]).addTo(map);
-    marker.setIcon(myIcon);
+    var viewpoints = [
+        {
+            "name" : "Miradoiro da Os Chancís",
+            "lat": 42.411231108946076,
+            "lon": -7.634741663932801
+        },
+        {
+            "name" : "Miradoiro da Cividade",
+            "lat": 42.39334215481423,
+            "lon": -7.615011334419251
+        },
+        {
+            "name" : "Miradoiro do Boqueiriño",
+            "lat": 42.40393908425197,
+            "lon": -7.596171498298644
+        },
+        {
+            "name" : "Miradoiro de Santiorxo",
+            "lat": 42.40786840656946,
+            "lon": -7.568507194519042
+        },
+        {
+            "name" : "Miradoiro de Cadeiras",
+            "lat": 42.3976841411843,
+            "lon": -7.555275857448577
+        },
+        {
+            "name" : "Miradoiro de Os Chelos",
+            "lat": 42.38953276520176,
+            "lon": -7.517826855182647
+        },
+        {
+            "name" : "Miradoiro de Souto Chao",
+            "lat": 42.407500043057176,
+            "lon": -7.471837699413299
+        },
+        {
+            "name" : "Miradoiro da Pena do Castelo",
+            "lat": 42.412528216274005,
+            "lon": -7.467776834964752
+        }
+    ]
+
+    for (var i = viewpoints.length - 1; i >= 0; i--) {
+        var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon]).addTo(map);
+        marker.setIcon(myIcon);
+    }    
 
     // marker.bindPopup("<b>Miradoiro da Cividade!</b><br>Vaia vistas!");
 
-    marker.on('click', () => {
+    /*marker.on('click', () => {
       console.log('click');
       sidebar.open('home');
-    });
+    });*/
 
     function showRoute() {
         L.Routing.control({

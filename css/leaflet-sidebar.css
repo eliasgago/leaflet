@@ -178,7 +178,7 @@
 
 @media (min-width: 768px) {
   .sidebar-left.collapsed ~ .sidebar-map .leaflet-left {
-    left: 50px; } }
+    left: 60px; } }
 
 @media (min-width: 768px) {
   .sidebar-right ~ .sidebar-map .leaflet-right {
