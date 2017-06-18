@@ -8,6 +8,8 @@
   <link rel="stylesheet" href="./routing/leaflet-routing-machine.css" />
   <link rel="stylesheet" type="text/css" href="./css/jcarousel.responsive.css">
   <link rel="stylesheet" type="text/css" href="./css/lity.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
 
@@ -32,12 +34,10 @@
             height: 100%;
             width: 100%;
             font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+            color: #fff;
         }
         h1 {
             font-family: 'Playfair Display', serif;
-        }
-        .lorem {
-            color: #AAA;
         }
   </style>
 </head>
@@ -56,17 +56,19 @@
         <!-- Tab panes -->
         <div class="sidebar-content">
             <div class="sidebar-pane" id="viewpoints">
-                <div class="container">
+                <div class="flip-container">
                     <div class="front">
-                        <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                        <ul class="list">
-                            <li>
-                                <a href="#" class="link">Miradoiro de Santiorxo</a>
-                            </li>
-                            <li>
-                                <a href="#" class="link">Miradoiro de Cadeiras</a>
-                            </li>
-                        </ul>
+                        <h1 class="sidebar-header">Miradoiros<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+                        <div class="row">
+                            <div class="img-icon col-md-6">
+                                <img src="./img/miradoiros/cadeiras.jpg" class="img-circle">
+                                <p><h4>Miradoiro de Cadeiras</h4></p>
+                            </div>
+                            <div class="img-icon col-md-6">
+                                <img src="./img/miradoiros/santiorxo.jpg" class="img-circle">
+                                <p><h4>Miradoiro de Santiorxo</h4></p>
+                            </div>
+                        </div>
                     </div>
                     <div class="back">
                         <h1 class="sidebar-header">
@@ -125,9 +127,341 @@
   <script src="./js/leaflet-sidebar.js"></script>
 
   <script type="text/javascript">
+  L.Mask = L.Polygon.extend({
+      options: {
+        stroke: false,
+        color: '#333',
+        fillOpacity: 0.9,
+        clickable: true,
+
+        outerBounds: new L.LatLngBounds([-180, -360], [90, 360])
+      },
+
+      initialize: function (latLngs, options) {
+            
+             var outerBoundsLatLngs = [
+          this.options.outerBounds.getSouthWest(),
+          this.options.outerBounds.getNorthWest(),
+          this.options.outerBounds.getNorthEast(),
+          this.options.outerBounds.getSouthEast()
+        ];
+            L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);  
+      },
+
+    });
+    L.mask = function (latLngs, options) {
+      return new L.Mask(latLngs, options);
+    };
+
+
+
+    // Polygon created with http://geojson.io/
+    var france = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {},
+          "geometry": {
+            "type": "Polygon",
+            "coordinates": [
+            [
+              [
+                -7.544351,
+                42.493775
+              ],
+              [
+                -7.529888,
+                42.488248
+              ],
+              [
+                -7.527916,
+                42.482835
+              ],
+              [
+                -7.529699,
+                42.479728
+              ],
+              [
+                -7.52184,
+                42.471295
+              ],
+              [
+                -7.521277,
+                42.468727
+              ],
+              [
+                -7.526606,
+                42.46926
+              ],
+              [
+                -7.515944,
+                42.461021
+              ],
+              [
+                -7.516441,
+                42.453908
+              ],
+              [
+                -7.510007,
+                42.447788
+              ],
+              [
+                -7.503707,
+                42.444867
+              ],
+              [
+                -7.505665,
+                42.440151
+              ],
+              [
+                -7.501832,
+                42.438396
+              ],
+              [
+                -7.496576,
+                42.438476
+              ],
+              [
+                -7.495762,
+                42.435123
+              ],
+              [
+                -7.485907,
+                42.436509
+              ],
+              [
+                -7.482334,
+                42.438357
+              ],
+              [
+                -7.464506,
+                42.439948
+              ],
+              [
+                -7.453049,
+                42.438145
+              ],
+              [
+                -7.457512,
+                42.429966
+              ],
+              [
+                -7.45799,
+                42.420799
+              ],
+              [
+                -7.447941,
+                42.412225
+              ],
+              [
+                -7.447367,
+                42.407024
+              ],
+              [
+                -7.448746,
+                42.407124
+              ],
+              [
+                -7.465671,
+                42.407138
+              ],
+              [
+                -7.470785,
+                42.403373
+              ],
+              [
+                -7.479549,
+                42.401203
+              ],
+              [
+                -7.500979,
+                42.388695
+              ],
+              [
+                -7.528322,
+                42.383843
+              ],
+              [
+                -7.540784,
+                42.384392
+              ],
+              [
+                -7.549354,
+                42.387004
+              ],
+              [
+                -7.565506,
+                42.401046
+              ],
+              [
+                -7.57465,
+                42.404831
+              ],
+              [
+                -7.595007,
+                42.396804
+              ],
+              [
+                -7.601191,
+                42.389846
+              ],
+              [
+                -7.616493,
+                42.38421
+              ],
+              [
+                -7.620007,
+                42.385445
+              ],
+              [
+                -7.624413,
+                42.392998
+              ],
+              [
+                -7.62736,
+                42.394732
+              ],
+              [
+                -7.630708,
+                42.406554
+              ],
+              [
+                -7.63899,
+                42.408975
+              ],
+              [
+                -7.647277,
+                42.413921
+              ],
+              [
+                -7.656772,
+                42.415149
+              ],
+              [
+                -7.661987,
+                42.423017
+              ],
+              [
+                -7.661205,
+                42.439178
+              ],
+              [
+                -7.659263,
+                42.439725
+              ],
+              [
+                -7.653613,
+                42.436965
+              ],
+              [
+                -7.649581,
+                42.439308
+              ],
+              [
+                -7.646525,
+                42.438904
+              ],
+              [
+                -7.644045,
+                42.442505
+              ],
+              [
+                -7.632579,
+                42.443944
+              ],
+              [
+                -7.632795,
+                42.448192
+              ],
+              [
+                -7.628568,
+                42.452668
+              ],
+              [
+                -7.629962,
+                42.458553
+              ],
+              [
+                -7.627574,
+                42.464253
+              ],
+              [
+                -7.61758,
+                42.474179
+              ],
+              [
+                -7.606278,
+                42.47561
+              ],
+              [
+                -7.599887,
+                42.483826
+              ],
+              [
+                -7.594178,
+                42.482757
+              ],
+              [
+                -7.585779,
+                42.488656
+              ],
+              [
+                -7.578841,
+                42.486629
+              ],
+              [
+                -7.573887,
+                42.493061
+              ],
+              [
+                -7.569394,
+                42.491176
+              ],
+              [
+                -7.567318,
+                42.493248
+              ],
+              [
+                -7.561057,
+                42.489782
+              ],
+              [
+                -7.556392,
+                42.490039
+              ],
+              [
+                -7.553429,
+                42.49364
+              ],
+              [
+                -7.547622,
+                42.497104
+              ],
+              [
+                -7.544351,
+                42.493775
+              ]
+            ]
+          ]
+          }
+        }
+      ]
+    };
+
+
     var map = L.map('map').setView([42.431862, -7.537178], 13);
 
-    L.tileLayer('https://api.mapbox.com/styles/v1/eliasgago/cj3yb3k3618zz2tnt1o3dzj1k/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw', {
+    // transform geojson coordinates into an array of L.LatLng
+    var coordinates = france.features[0].geometry.coordinates[0];
+    var latLngs = [];
+    for (i=0; i<coordinates.length; i++) {
+        latLngs.push(new L.LatLng(coordinates[i][1], coordinates[i][0]));
+    }
+
+    //L.mask(latLngs).addTo(map);
+
+    L.tileLayer('https://api.mapbox.com/styles/v1/eliasgago/cj42jt6vc51f12rlch2rkpri4/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw', {
         attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
         maxZoom: 18,
         id: 'your.mapbox.project.id',

@@ -82,7 +82,7 @@
   position: absolute;
   top: 0;
   bottom: 0;
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: rgba(91, 192, 235, 0.95);
   overflow-x: hidden;
   overflow-y: auto; }
   .sidebar-left .sidebar-content {
@@ -212,34 +212,28 @@
   background-color: #5BC0EB; 
 }
 
-#viewpoints .sidebar-header {
-  color: #5BC0EB; 
-}
-
 #sites_tab {
   background-color: #9BC53D; 
-}
-
-#sites .sidebar-header {
-  color: #9BC53D; 
 }
 
 #lodgings_tab {
   background-color: #FFC857; 
 }
 
-#lodgings .sidebar-header {
-  color: #FFC857; 
-}
-
 #wineries_tab {
   background-color: #C3423F; 
 }
 
-#wineries .sidebar-header {
-  color: #C3423F; 
-}
-
 .leaflet-touch .leaflet-bar {
   border: 0px;
+}
+
+.img-icon {
+  text-align: center;
+}
+
+.img-circle {
+  border: 2px solid;
+  width: 150px;
+  height: 150px;
 }
