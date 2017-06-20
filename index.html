@@ -15,6 +15,7 @@
 
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 
   <script src="./routing/leaflet-routing-machine.js"></script>
 
@@ -42,7 +43,7 @@
   </style>
 </head>
 <body>
-    <div id="sidebar" class="sidebar collapsed">
+    <div id="sidebar" class="sidebar sidebar-right collapsed">
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
@@ -56,52 +57,78 @@
         <!-- Tab panes -->
         <div class="sidebar-content">
             <div class="sidebar-pane" id="viewpoints">
-                <div class="flip-container">
-                    <div class="front">
-                        <h1 class="sidebar-header">Miradoiros<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
-                        <div class="sidebar-data row">
-                            <div class="img-icon col-md-6">
-                                <a href="#" class="link">
-                                    <img src="./img/miradoiros/cadeiras.jpg" class="img-circle">
-                                    <p><h4>Miradoiro de Cadeiras</h4></p>
-                                </a>
-                            </div>
-                            <div class="img-icon col-md-6">
-                                <a href="#" class="link">
-                                    <img src="./img/miradoiros/santiorxo.jpg" class="img-circle">
-                                    <p><h4>Miradoiro de Santiorxo</h4></p>
-                                </a>
-                            </div>
+                <div id="viewpoints_list" class="level1">
+                    <h1 class="sidebar-header">Miradoiros</h1>
+                    <div class="sidebar-data row">
+                        <div class="img-icon col-md-6">
+                            <a id="cadeiras" href="#" class="link">
+                                <img src="./img/miradoiros/cadeiras.jpg" class="img-circle">
+                                <p><h4>Miradoiro de Cadeiras</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="santiorxo" href="#" class="link">
+                                <img src="./img/miradoiros/santiorxo.jpg" class="img-circle">
+                                <p><h4>Miradoiro de Santiorxo</h4></p>
+                            </a>
                         </div>
                     </div>
-                    <div class="back">
-                        <div class="sidebar-data">
+                </div>
+                <div id="viewpoints_cadeiras" class="level2">
+                    <h1 class="sidebar-header">Miradoiro de Cadeiras</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/miradoiros/cadeiras.jpg" width="100%">
 
-                            <img src="./img/miradoiros/cadeiras.jpg" width="100%">
+                        <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
-                            <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
+                        <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
 
-                            <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+                        <div class="jcarousel-wrapper">
+                            <div class="jcarousel">
+                                <ul>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
+                                    <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
+                                </ul>
+                            </div>
 
-                            <!--div class="jcarousel-wrapper">
-                                <div class="jcarousel">
-                                    <ul>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 1"></a></li>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 2"></a></li>
-                                        <li><a href="./img/miradoiros/cadeiras.jpg" data-lity><img src="./img/miradoiros/cadeiras.jpg" alt="Image 3"></a></li>
-                                    </ul>
-                                </div>
+                            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
 
-                                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                            <p class="jcarousel-pagination"></p>
+                        </div>
 
-                                <p class="jcarousel-pagination"></p>
-                            </div-->
+                        <a href="#" class="button_back">Volver</a>
+                    </div>
+                </div>
+                <div id="viewpoints_santiorxo" class="level2">
+                    <h1 class="sidebar-header">Miradoiro de Santiorxo</i></span></h1>
+                    <div class="sidebar-data">
+                        <img src="./img/miradoiros/santiorxo.jpg" width="100%">
 
-                            <p><a href="#" class="button_back">Volver</a></p>
+                        <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
+
+                        <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+
+                        <div class="jcarousel-wrapper">
+                            <div class="jcarousel">
+                                <ul>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 1"></a></li>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 2"></a></li>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 3"></a></li>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 1"></a></li>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 2"></a></li>
+                                    <li><a href="./img/miradoiros/santiorxo.jpg" data-lity><img src="./img/miradoiros/santiorxo.jpg" alt="Image 3"></a></li>
+                                </ul>
+                            </div>
+
+                            <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                            <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+
+                            <p class="jcarousel-pagination"></p>
                         </div>
                     </div>
                 </div>
@@ -163,235 +190,9 @@
 
   <script src="./js/leaflet-sidebar.js"></script>
 
-  <script type="text/javascript">
-  L.Mask = L.Polygon.extend({
-      options: {
-        stroke: false,
-        color: '#333',
-        fillOpacity: 0.9,
-        clickable: true,
+  <script src="./js/sober-coordinates.js"></script>
+  <script src="./js/map-load-mask.js"></script>
+  <script src="./js/map-load.js"></script>
 
-        outerBounds: new L.LatLngBounds([-180, -360], [90, 360])
-      },
-
-      initialize: function (latLngs, options) {
-            
-             var outerBoundsLatLngs = [
-          this.options.outerBounds.getSouthWest(),
-          this.options.outerBounds.getNorthWest(),
-          this.options.outerBounds.getNorthEast(),
-          this.options.outerBounds.getSouthEast()
-        ];
-            L.Polygon.prototype.initialize.call(this, [outerBoundsLatLngs, latLngs], options);  
-      },
-
-    });
-    L.mask = function (latLngs, options) {
-      return new L.Mask(latLngs, options);
-    };
-
-
-
-    // Polygon created with http://geojson.io/
-    var france = {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "properties": {},
-          "geometry": {
-            "type": "Polygon",
-            "coordinates": [
-          [
-            [
-              -7.413368225097656,
-              42.45740743905049
-            ],
-            [
-              -7.499885559082031,
-              42.45740743905049
-            ],
-            [
-              -7.499885559082031,
-              42.498681147258516
-            ],
-            [
-              -7.669486999511719,
-              42.498681147258516
-            ],
-            [
-              -7.669486999511719,
-              42.38238681231227
-            ],
-            [
-              -7.41302490234375,
-              42.38238681231227
-            ],
-            [
-              -7.41302490234375,
-              42.45740743905049
-            ]
-          ]
-        ]
-          }
-        }
-      ]
-    };
-
-
-    var map = L.map('map').setView([42.438862, -7.547178], 13);
-
-    // transform geojson coordinates into an array of L.LatLng
-    var coordinates = france.features[0].geometry.coordinates[0];
-    var latLngs = [];
-    for (i=0; i<coordinates.length; i++) {
-        latLngs.push(new L.LatLng(coordinates[i][1], coordinates[i][0]));
-    }
-
-    L.mask(latLngs).addTo(map);
-
-    L.tileLayer('https://api.mapbox.com/styles/v1/eliasgago/cj42shn7e5kr52rs2pjq7cgsp/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw', {
-        attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
-        maxZoom: 18,
-        id: 'your.mapbox.project.id',
-        accessToken: 'pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw'
-    }).addTo(map);
-
-    var sidebar = L.control.sidebar('sidebar').addTo(map);
-
-    var viewpointsIcon = L.icon({
-        iconUrl: './img/view_icon.png',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [-3, -76]
-    });
-
-    var myIcon2 = L.icon({
-        iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon-2x.png',
-        iconSize: [70, 95],
-        iconAnchor: [22, 94],
-        popupAnchor: [-3, -76],
-        shadowUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-shadow.png',
-        shadowSize: [68, 95],
-        shadowAnchor: [22, 94]
-    });
-
-    var viewpoints = [
-        {
-            "name" : "Miradoiro da Os Chancís",
-            "lat": 42.411231108946076,
-            "lon": -7.634741663932801
-        },
-        {
-            "name" : "Miradoiro da Cividade",
-            "lat": 42.39334215481423,
-            "lon": -7.615011334419251
-        },
-        {
-            "name" : "Miradoiro do Boqueiriño",
-            "lat": 42.40393908425197,
-            "lon": -7.596171498298644
-        },
-        {
-            "name" : "Miradoiro de Santiorxo",
-            "lat": 42.40786840656946,
-            "lon": -7.568507194519042
-        },
-        {
-            "name" : "Miradoiro de Cadeiras",
-            "lat": 42.3976841411843,
-            "lon": -7.555275857448577
-        },
-        {
-            "name" : "Miradoiro de Os Chelos",
-            "lat": 42.38953276520176,
-            "lon": -7.517826855182647
-        },
-        {
-            "name" : "Miradoiro de Souto Chao",
-            "lat": 42.407500043057176,
-            "lon": -7.471837699413299
-        },
-        {
-            "name" : "Miradoiro da Pena do Castelo",
-            "lat": 42.412528216274005,
-            "lon": -7.467776834964752
-        }
-    ]
-
-    for (var i = viewpoints.length - 1; i >= 0; i--) {
-        var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon]).addTo(map);
-        marker.setIcon(viewpointsIcon);
-    }    
-
-
-    var sitesIcon = L.icon({
-        iconUrl: './img/sites_icon.png',
-        iconSize: [40, 40],
-        iconAnchor: [20, 20],
-        popupAnchor: [-3, -76]
-    });
-
-    var sites = [
-        {
-            "name" : "Os Muiños do Xabrega",
-            "lat": 42.41889454494551,
-            "lon": -7.630434036254883
-        },
-        {
-            "name" : "Petroglifos de Proendos",
-            "lat": 42.452262143758645,
-            "lon": -7.586199045181274
-        },
-        {
-            "name" : "Centro Oleiro Rectoral de Gundivós",
-            "lat": 42.446261403946686,
-            "lon": -7.5407034158706665
-        },
-        {
-            "name" : "Igrexa de San Xillao de Lobios",
-            "lat": 42.40813774626316,
-            "lon": -7.530913352966309
-        }
-    ]
-
-    for (var i = sites.length - 1; i >= 0; i--) {
-        var marker = L.marker([sites[i].lat, sites[i].lon]).addTo(map);
-        marker.setIcon(sitesIcon);
-    }    
-
-
-    // marker.bindPopup("<b>Miradoiro da Cividade!</b><br>Vaia vistas!");
-
-    /*marker.on('click', () => {
-      console.log('click');
-      sidebar.open('home');
-    });*/
-
-    function showRoute() {
-        L.Routing.control({
-          waypoints: [
-            L.latLng(42.393274, -7.614985),
-            L.latLng(42.397951, -7.555044)
-          ]
-        }).addTo(map);
-    }
-
-    $(document).on("click", ".link", function () {
-        console.log('change');
-        $('.front').toggleClass('hover');
-        $('.back').toggleClass('hover');
-        console.log(marker);
-        marker.setIcon(myIcon2);
-    });
-
-    $(document).on("click", ".button_back", function () {
-        $('.front').toggleClass('hover');
-        $('.back').toggleClass('hover');
-        console.log(marker);
-        marker.setIcon(myIcon);
-    });
-
-  </script>
 </body>
 </html>

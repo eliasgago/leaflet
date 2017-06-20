@@ -38,7 +38,7 @@
   top: 0;
   bottom: 0;
   height: 100%;
-  background-color: #fff; }
+  background-color: rgba(120, 130, 116, 0.45); }
   .sidebar-left .sidebar-tabs {
     left: 0; }
   .sidebar-right .sidebar-tabs {
@@ -89,25 +89,9 @@
     right: 0; }
   .sidebar-right .sidebar-content {
     left: 0;
-    right: 40px; }
+    right: 50px; }
   .sidebar.collapsed > .sidebar-content {
     overflow-y: hidden; }
-
-.sidebar-content #viewpoints {
-  background-color: rgba(91, 192, 235, 0.95);
-}
-
-.sidebar-content #sites {
-  background-color: rgba(155, 197, 61, 0.95);
-}
-
-.sidebar-content #lodgings {
-  background-color: rgba(255, 200, 87, 0.95);
-}
-
-.sidebar-content #wineries {
-  background-color: rgba(195, 66, 63, 0.95);
-}
 
 .sidebar-pane {
   display: none;
@@ -146,8 +130,7 @@
   height: 50px;
   padding: 0 20px;
   line-height: 40px;
-  font-size: 18pt;
-  text-transform: uppercase;
+  font-size: 16pt;
   color: #fff;
   border-bottom: 1px solid;}
   .sidebar-right .sidebar-header {
@@ -226,19 +209,35 @@
     right: 50px; } }
 
 #viewpoints_tab {
-  background-color: #5BC0EB; 
+  background-color: #51A3A3; 
 }
 
 #sites_tab {
-  background-color: #9BC53D; 
+  background-color: #CB904D; 
 }
 
 #lodgings_tab {
-  background-color: #FFC857; 
+  background-color: #DFCC74; 
 }
 
 #wineries_tab {
-  background-color: #C3423F; 
+  background-color: #75485E; 
+}
+
+.sidebar-content #viewpoints {
+  background-color: rgba(81, 163, 163, 0.95);
+}
+
+.sidebar-content #sites {
+  background-color: rgba(203, 144, 77, 0.95);
+}
+
+.sidebar-content #lodgings {
+  background-color: rgba(223, 204, 116, 0.95);
+}
+
+.sidebar-content #wineries {
+  background-color: rgba(117, 72, 94, 0.95);
 }
 
 .leaflet-touch .leaflet-bar {
