@@ -86,7 +86,8 @@ var viewpoints = [
 function show(e) {
     console.log(e.target.options.markerId);
     var markerId = e.target.options.markerId;
-    sidebar.open('viewpoints');
+    var type = e.target.options.type;
+    sidebar.open(type);
     $('.level1').hide();
     $('.level2').hide();
     $('#' + markerId).show(1000);
@@ -95,7 +96,12 @@ function show(e) {
 var markerPoints = [];
 
 for (var i = viewpoints.length - 1; i >= 0; i--) {
-    var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon], {markerId: 'viewpoints_' + viewpoints[i].id}).addTo(map);
+    var options = {
+        markerId: 'viewpoints_' + viewpoints[i].id,
+        type: 'viewpoints',
+        title: viewpoints[i].name
+    };
+    var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon], options).addTo(map);
     marker.setIcon(viewpointsIcon);
     marker.on('click', show);
     markerPoints.push(marker);
@@ -133,8 +139,56 @@ var sites = [
 ]
 
 for (var i = sites.length - 1; i >= 0; i--) {
-    var marker = L.marker([sites[i].lat, sites[i].lon]);
+    var options = {
+        markerId: 'sites_' + sites[i].id,
+        type: 'sites',
+        title: sites[i].name
+    };
+    var marker = L.marker([sites[i].lat, sites[i].lon], options).addTo(map);
     marker.setIcon(sitesIcon);
+    marker.on('click', show);
+    markerPoints.push(marker);
+}   
+
+var lodgingsIcon = L.icon({
+    iconUrl: './img/lodgings_icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [-3, -76]
+});
+
+var lodgings = [
+    {
+        "name" : "Vila Donatus",
+        "lat": 42.41451442176539,
+        "lon": -7.4793291091918945
+    },
+    {
+        "name" : "Casa Corona",
+        "lat": 42.45853538959867,
+        "lon": -7.597963213920593
+    },
+    {
+        "name" : "Casa das Flores",
+        "lat": 42.44503822748129,
+        "lon": -7.573903799057006
+    },
+    {
+        "name" : "Casa do Estevo",
+        "lat": 42.42134783469654,
+        "lon": -7.472907900810241
+    }
+]
+
+for (var i = lodgings.length - 1; i >= 0; i--) {
+    var options = {
+        markerId: 'lodgings_' + lodgings[i].id,
+        type: 'lodgings',
+        title: lodgings[i].name
+    };
+    var marker = L.marker([lodgings[i].lat, lodgings[i].lon], options).addTo(map);
+    marker.setIcon(lodgingsIcon);
+    marker.on('click', show);
     markerPoints.push(marker);
 }   
 
