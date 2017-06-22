@@ -266,3 +266,12 @@
   color: #fff;
   text-decoration: none;
 }
+
+.options {
+  width: 100%;
+  text-align: center;
+}
+
+.options li {
+  list-style-type: none;
+}
