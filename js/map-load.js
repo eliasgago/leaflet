@@ -15,13 +15,6 @@ L.tileLayer(mapboxKey, {
 
 var sidebar = L.control.sidebar('sidebar', {position: 'right'}).addTo(map);
 
-var viewpointsIcon = L.icon({
-    iconUrl: './img/view_icon.png',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
-
 var myIcon2 = L.icon({
     iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon-2x.png',
     iconSize: [70, 95],
@@ -93,7 +86,14 @@ function show(e) {
     $('#' + markerId).show(1000);
 }
 
-var markerPoints = [];
+var viewpointsIcon = L.icon({
+    iconUrl: './img/view_icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [-3, -76]
+});
+
+var viewpointsMarkers = [];
 
 for (var i = viewpoints.length - 1; i >= 0; i--) {
     var options = {
@@ -103,10 +103,38 @@ for (var i = viewpoints.length - 1; i >= 0; i--) {
     };
     var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon], options).addTo(map);
     marker.setIcon(viewpointsIcon);
+    marker.setZIndexOffset(300);
     marker.on('click', show);
-    markerPoints.push(marker);
+    viewpointsMarkers.push(marker);
 }    
 
+var sites = [
+    {
+        "name" : "Os Muiños do Xabrega",
+        "icon": "./img/xabrega_icon.png",
+        "lat": 42.41889454494551,
+        "lon": -7.630434036254883
+    },
+    {
+        "id": "proendos",
+        "name" : "Petroglifos de Proendos",
+        "icon": "./img/proendos_icon.png",
+        "lat": 42.452262143758645,
+        "lon": -7.586199045181274
+    },
+    {
+        "name" : "Centro Oleiro Rectoral de Gundivós",
+        "icon": "./img/gundivos_icon.png",
+        "lat": 42.446261403946686,
+        "lon": -7.5407034158706665
+    },
+    {
+        "name" : "Igrexa de San Xillao de Lobios",
+        "icon": "./img/lobios_icon.png",
+        "lat": 42.40813774626316,
+        "lon": -7.530913352966309
+    }
+]
 
 var sitesIcon = L.icon({
     iconUrl: './img/sites_icon.png',
@@ -115,28 +143,7 @@ var sitesIcon = L.icon({
     popupAnchor: [-3, -76]
 });
 
-var sites = [
-    {
-        "name" : "Os Muiños do Xabrega",
-        "lat": 42.41889454494551,
-        "lon": -7.630434036254883
-    },
-    {
-        "name" : "Petroglifos de Proendos",
-        "lat": 42.452262143758645,
-        "lon": -7.586199045181274
-    },
-    {
-        "name" : "Centro Oleiro Rectoral de Gundivós",
-        "lat": 42.446261403946686,
-        "lon": -7.5407034158706665
-    },
-    {
-        "name" : "Igrexa de San Xillao de Lobios",
-        "lat": 42.40813774626316,
-        "lon": -7.530913352966309
-    }
-]
+var sitesMarkers = [];
 
 for (var i = sites.length - 1; i >= 0; i--) {
     var options = {
@@ -145,17 +152,21 @@ for (var i = sites.length - 1; i >= 0; i--) {
         title: sites[i].name
     };
     var marker = L.marker([sites[i].lat, sites[i].lon], options).addTo(map);
-    marker.setIcon(sitesIcon);
+    if(sites[i].icon){
+        var itselfIcon = L.icon({
+            iconUrl: sites[i].icon,
+            iconSize: [40, 40],
+            iconAnchor: [20, 20],
+            popupAnchor: [-3, -76]
+        });
+        marker.setIcon(itselfIcon);
+    }else{
+        marker.setIcon(sitesIcon);   
+    }
+    marker.setZIndexOffset(400);
     marker.on('click', show);
-    markerPoints.push(marker);
+    sitesMarkers.push(marker);
 }   
-
-var lodgingsIcon = L.icon({
-    iconUrl: './img/lodgings_icon.png',
-    iconSize: [25, 25],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
 
 var lodgings = [
     {
@@ -220,6 +231,15 @@ var lodgings = [
     }
 ]
 
+var lodgingsIcon = L.icon({
+    iconUrl: './img/lodgings_icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [-3, -76]
+});
+
+var lodgingsMarkers = [];
+
 for (var i = lodgings.length - 1; i >= 0; i--) {
     var options = {
         markerId: 'lodgings_' + lodgings[i].id,
@@ -228,17 +248,11 @@ for (var i = lodgings.length - 1; i >= 0; i--) {
     };
     var marker = L.marker([lodgings[i].lat, lodgings[i].lon], options).addTo(map);
     marker.setIcon(lodgingsIcon);
+    marker.setZIndexOffset(200);
     marker.on('click', show);
-    markerPoints.push(marker);
+    lodgingsMarkers.push(marker);
 }   
 
-
-var wineriesIcon = L.icon({
-    iconUrl: './img/wineries_icon.png',
-    iconSize: [25, 25],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
 
 var wineries = [
     {
@@ -336,10 +350,125 @@ var wineries = [
         "name" : "San Xiao",
         "lat": 42.40705245867436,
         "lon": -7.530033588409423
+    },
+    {
+        "id": "frieira",
+        "name" : "Viña A Frieira",
+        "lat": 42.418565848308745,
+        "lon": -7.5054484605789185
+    },
+    {
+        "id": "cichon",
+        "name" : "Viña Cichón",
+        "lat": 42.41423322800066,
+        "lon": -7.48068630695343
+    },
+    {
+        "id": "cruceiro",
+        "name" : "Cruceiro",
+        "lat": 42.41749658227026,
+        "lon": -7.504348754882812
+    },
+    {
+        "id": "anzio",
+        "name" : "Anzio",
+        "lat": 42.41423322800066,
+        "lon": -7.48068630695343
+    },
+    {
+        "id": "barbado",
+        "name" : "Barbado",
+        "lat": 42.453378312949006,
+        "lon": -7.585823535919189
+    },
+    {
+        "id": "gullufre",
+        "name" : "Gullufre",
+        "lat": 42.40739309840652,
+        "lon": -7.533617019653319
+    },
+    {
+        "id": "regoa",
+        "name" : "Régoa",
+        "lat": 42.3964600166767,
+        "lon": -7.550182342529296
+    },
+    {
+        "id": "rectoral_gundivos",
+        "name" : "Rectoral de Gundivós",
+        "lat": 42.41701738675883,
+        "lon": -7.5199806690216064
+    },
+    {
+        "id": "regina",
+        "name" : "Regina Viarum",
+        "lat": 42.40862295088143,
+        "lon": -7.476593255996704
+    },
+    {
+        "id": "decima",
+        "name" : "Décima",
+        "lat": 42.419306403359556,
+        "lon": -7.501140832901
+    },
+    {
+        "id": "val_de_lenda",
+        "name" : "Val de Lenda",
+        "lat": 42.40719505227568,
+        "lon": -7.513527274131775
+    },
+    {
+        "id": "peon",
+        "name" : "Viña Peón",
+        "lat": 42.42992666380791,
+        "lon": -7.570309638977051
+    },
+    {
+        "id": "regueiral",
+        "name" : "Viña Regueiral",
+        "lat": 42.420767686867336,
+        "lon": -7.58104920387268
+    },
+    {
+        "id": "guimaro",
+        "name" : "Guímaro",
+        "lat": 42.42975244586277,
+        "lon": -7.51813530921936
+    },
+    {
+        "id": "tear",
+        "name" : "Tear",
+        "lat": 42.43259926477228,
+        "lon": -7.572535872459411
+    },
+    {
+        "id": "baldomero",
+        "name" : "Baldomero",
+        "lat": 42.409634937008036,
+        "lon": -7.520511746406556
+    },
+    {
+        "id": "cividade",
+        "name" : "Cividade",
+        "lat": 42.41473620750738,
+        "lon": -7.590157985687256
+    },
+    {
+        "id": "mezquita",
+        "name" : "Mezquita",
+        "lat": 42.4125777236558,
+        "lon": -7.509214282035828
     }
 ];
 
-var wineriesGroup = [];
+var wineriesIcon = L.icon({
+    iconUrl: './img/wineries_icon.png',
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+    popupAnchor: [-3, -76]
+});
+
+var wineriesMarkers = [];
 
 for (var i = wineries.length - 1; i >= 0; i--) {
     var options = {
@@ -349,23 +478,45 @@ for (var i = wineries.length - 1; i >= 0; i--) {
     };
     var marker = L.marker([wineries[i].lat, wineries[i].lon], options).addTo(map);
     marker.setIcon(wineriesIcon);
+    marker.setZIndexOffset(100);
     marker.on('click', show);
-    wineriesGroup.push(marker);
+    wineriesMarkers.push(marker);
 }   
 
-var points = L.layerGroup(markerPoints).addTo(map); 
-var wineriesPoints = L.layerGroup(wineriesGroup).addTo(map); 
+var viewpointsLayer = L.layerGroup(viewpointsMarkers).addTo(map); 
+var sitesLayer = L.layerGroup(sitesMarkers).addTo(map); 
+var lodgingsLayer = L.layerGroup(lodgingsMarkers).addTo(map); 
+var wineriesLayer = L.layerGroup(wineriesMarkers).addTo(map); 
+map.removeLayer(wineriesLayer);
 
 map.on('zoomend', function() {
     console.log(map.getZoom());
     if (map.getZoom() <12){
-        if (map.hasLayer(points)) {
-            map.removeLayer(points);
+        if (map.hasLayer(viewpointsLayer)) {
+            map.removeLayer(viewpointsLayer);
+        }
+        if (map.hasLayer(sitesLayer)) {
+            map.removeLayer(sitesLayer);
+        }
+        if (map.hasLayer(lodgingsLayer)) {
+            map.removeLayer(lodgingsLayer);
+        }
+        if (map.hasLayer(wineriesLayer)) {
+            map.removeLayer(wineriesLayer);
         }
     }
     if (map.getZoom() >= 12){
-        if (!map.hasLayer(points)){
-            map.addLayer(points);
+        if (!map.hasLayer(viewpointsLayer)){
+            map.addLayer(viewpointsLayer);
+        }
+        if (!map.hasLayer(sitesLayer)){
+            map.addLayer(sitesLayer);
+        }
+        if (!map.hasLayer(lodgingsLayer)){
+            map.addLayer(lodgingsLayer);
+        }
+        if (!map.hasLayer(wineriesLayer)){
+            map.addLayer(wineriesLayer);
         }
     }
 });
@@ -397,3 +548,33 @@ $(document).on("click", ".button_back", function () {
     $('.level2').hide(1000);
     $('#viewpoints_list').show(1000);
 });
+
+var switchableOptions = {
+    click: function(event, code, isChecked){
+        var layerGroup = null;
+        if(code == 'viewpoints'){
+            layerGroup = viewpointsLayer;
+        }else if(code == 'sites'){
+            layerGroup = sitesLayer;
+        }else if(code == 'lodgings'){
+            layerGroup = lodgingsLayer;
+        }else if(code == 'wineries'){
+            layerGroup = wineriesLayer;
+        }
+        if(layerGroup){
+            if (map.hasLayer(layerGroup)) {
+                map.removeLayer(layerGroup);
+            }else{
+                map.addLayer(layerGroup);
+            }
+        }
+    }
+}
+
+$(document).ready(function(){
+    $('#show_viewpoints').switchable(switchableOptions);
+    $('#show_sites').switchable(switchableOptions);
+    $('#show_lodgings').switchable(switchableOptions);
+    $('#show_wineries').switchable(switchableOptions);
+});
+

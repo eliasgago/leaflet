@@ -3,13 +3,14 @@
   <meta charset="UTF-8">
   <title>A Leaflet map</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css" integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ==" crossorigin=""/>
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./css/fonts.css" />
   <link rel="stylesheet" href="./css/leaflet-sidebar.css" />
   <link rel="stylesheet" href="./css/flip.css" />
   <link rel="stylesheet" href="./routing/leaflet-routing-machine.css" />
   <link rel="stylesheet" type="text/css" href="./css/jcarousel.responsive.css">
   <link rel="stylesheet" type="text/css" href="./css/lity.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./css/switchable.css">
 
 
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
@@ -24,6 +25,7 @@
   <script type="text/javascript" src="./js/jcarousel.responsive.js"></script>
 
   <script type="text/javascript" src="./js/lity.js"></script>
+  <script type="text/javascript" src="./js/switchable.js"></script>
 
   <style type="text/css">
     
@@ -48,10 +50,11 @@
         <!-- Nav tabs -->
         <div class="sidebar-tabs">
             <ul role="tablist">
-                <li><a id="viewpoints_tab" href="#viewpoints" role="tab"><i class="fa fa-camera"></i></a></li>
-                <li><a id="sites_tab" href="#sites" role="tab"><i class="fa fa-star"></i></a></li>
-                <li><a id="lodgings_tab" href="#lodgings" role="tab"><i class="fa fa-hotel"></i></a></li>
-                <li><a id="wineries_tab" href="#wineries" role="tab"><i class="fa fa-glass"></i></a></li>
+                <li><a id="viewpoints_tab" href="#viewpoints" role="tab"><span class="icon-camera"></span></a></li>
+                <li><a id="sites_tab" href="#sites" role="tab"><span class="icon-star-full"></span></a></li>
+                <li><a id="lodgings_tab" href="#lodgings" role="tab"><span class="icon-hotel"></span></a></li>
+                <li><a id="wineries_tab" href="#wineries" role="tab"><span class="icon-glass"></span></a></li>
+                <li><a id="config_tab" href="#config" role="tab"><span class="icon-equalizer"></span></a></li>
             </ul>
         </div>
 
@@ -161,6 +164,24 @@
                     Miradoiro de Cadeiras
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
+            </div>
+
+            <div class="sidebar-pane" id="config">
+                <h1 class="sidebar-header">
+                    Configuración
+                    <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
+                </h1>
+                <div class="sidebar-data">
+                    Mostrar:
+                    <section>
+                        <ul class="showIcons">
+                            <li><input type="checkbox" id="show_viewpoints" checked value="checked" data-label="Miradores" data-code="viewpoints" data-color="#51A3A3"></li>
+                            <li><input type="checkbox" id="show_sites" checked value="checked" data-label="Sitios de Interés" data-code="sites" data-color="#CB904D"></li>
+                            <li><input type="checkbox" id="show_lodgings" checked value="checked" data-label="Alojamientos" data-code="lodgings" data-color="#DFCC74"></li>
+                            <li><input type="checkbox" id="show_wineries" value="checked" data-label="Bodegas" data-code="wineries" data-color="#75485E"></li>
+                        </ul>
+                    </section>
+                </div>
             </div>
 
         </div>
