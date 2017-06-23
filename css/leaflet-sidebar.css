@@ -121,20 +121,30 @@
   .sidebar-pane ul {
     padding: 10px;
   }
-  .sidebar-pane li > a {
-    text-decoration: none;
-  }
 
 .sidebar-header {
-  margin: -10px -20px 0;
   height: 50px;
+  margin: 0px;
   padding: 0 20px;
   line-height: 40px;
-  font-size: 16pt;
+  font-size: 22pt;
   color: #fff;
-  border-bottom: 1px solid;}
-  .sidebar-right .sidebar-header {
-    padding-left: 40px; }
+  text-align: center;}
+
+h1 {
+  padding-bottom: 5px;
+  position: relative;
+}
+
+h1:before{
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 1px;
+    bottom: 0;
+    left: 35%;
+    border-bottom: 1px solid white;
+}
 
 .sidebar-close {
   position: absolute;
@@ -264,24 +274,33 @@
 
 .sidebar-data {
   padding-top: 20px;
+  margin: 10px;
 }
 
 .sidebar-data a {
   color: #fff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 .sidebar-data a:hover {
   color: #fff;
-  text-decoration: none;
+  text-decoration: underline;
+}
+
+.sidebar-data img.principal {
+  padding: 10px 0px;
 }
 
 .options {
   width: 100%;
-  text-align: center;
 }
 
 .options li {
   list-style-type: none;
+  margin-top: 10px;
+}
+
+.options li span {
+  padding-right: 10px;
 }
 
 .showIcons li {
@@ -320,3 +339,7 @@
   }
 }
 /* end .slideOne */
+
+.row {
+  margin: 0px !important;
+}

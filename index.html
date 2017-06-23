@@ -13,7 +13,7 @@
   <link rel="stylesheet" type="text/css" href="./css/switchable.css">
 
 
-  <link href="https://fonts.googleapis.com/css?family=Playfair+Display|Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100|Raleway" rel="stylesheet">
 
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js" integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg==" crossorigin=""></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -34,14 +34,15 @@
             margin: 0;
         }
         html, body, #map {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Roboto', sans-serif;
+            font-weight: lighter;
             height: 100%;
             width: 100%;
-            font: 10pt "Helvetica Neue", Arial, Helvetica, sans-serif;
+            font: 12pt 'Roboto', sans-serif;
             color: #fff;
         }
-        h1 {
-            font-family: 'Playfair Display', serif;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Raleway', serif;
         }
   </style>
 </head>
@@ -62,18 +63,55 @@
         <div class="sidebar-content">
             <div class="sidebar-pane" id="viewpoints">
                 <div id="viewpoints_list" class="level1">
-                    <h1 class="sidebar-header">viewpoints</h1>
+                    <h1 class="sidebar-header">Miradoiros</h1>
                     <div class="sidebar-data row">
+                        <p>Las vistas del Río Sil pueden ser espectaculares desde cualquier punto, pero más aún si lo hacemos desde alguno de los magníficos miradores que se encuentran acondicionados a lo largo del Concello de Sober.</p>
                         <div class="img-icon col-md-6">
                             <a id="cadeiras" href="#" class="link">
-                                <img src="./img/viewpoints/cadeiras.jpg" class="img-circle">
-                                <p><h4>Miradoiro de Cadeiras</h4></p>
+                                <img src="./img/viewpoints/chancis_square.jpg" class="img-circle">
+                                <p><h4>Os Chancís</h4></p>
                             </a>
                         </div>
                         <div class="img-icon col-md-6">
                             <a id="santiorxo" href="#" class="link">
-                                <img src="./img/viewpoints/santiorxo.jpg" class="img-circle">
-                                <p><h4>Miradoiro de Santiorxo</h4></p>
+                                <img src="./img/viewpoints/cividade_square.jpg" class="img-circle">
+                                <p><h4>A Cividade</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="santiorxo" href="#" class="link">
+                                <img src="./img/viewpoints/boqueirino_square.jpg" class="img-circle">
+                                <p><h4>O Boqueiriño</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="santiorxo" href="#" class="link">
+                                <img src="./img/viewpoints/santiorxo_square.jpg" class="img-circle">
+                                <p><h4>Santiorxo</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="cadeiras" href="#" class="link">
+                                <img src="./img/viewpoints/cadeiras_square.jpg" class="img-circle">
+                                <p><h4>Cadeiras</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="cadeiras" href="#" class="link">
+                                <img src="./img/viewpoints/chelos_square.jpg" class="img-circle">
+                                <p><h4>Os Chelos</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="cadeiras" href="#" class="link">
+                                <img src="./img/viewpoints/souto_chao_square.jpg" class="img-circle">
+                                <p><h4>Souto Chao</h4></p>
+                            </a>
+                        </div>
+                        <div class="img-icon col-md-6">
+                            <a id="cadeiras" href="#" class="link">
+                                <img src="./img/viewpoints/pena_square.jpg" class="img-circle">
+                                <p><h4>Pena do Castelo</h4></p>
                             </a>
                         </div>
                     </div>
@@ -81,11 +119,14 @@
                 <div id="viewpoints_cadeiras" class="level2">
                     <h1 class="sidebar-header">Miradoiro de Cadeiras</h1>
                     <div class="sidebar-data">
-                        <img src="./img/viewpoints/cadeiras.jpg" width="100%">
+                        <img src="./img/viewpoints/cadeiras.jpg" width="100%" class="principal">
 
                         <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
-                        <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+                        <ul class="options">
+                            <li><span class="icon-map-o"></span> <a href="javascript:showRoute()">Mostrar ruta</a></li>
+                            <li><span class="icon-camera"></span> <a href="#" class="button_back">Otros miradores</a></li>
+                        </ul>
 
                         <div class="jcarousel-wrapper">
                             <div class="jcarousel">
@@ -105,17 +146,19 @@
                             <p class="jcarousel-pagination"></p>
                         </div>
 
-                        <a href="#" class="button_back">Volver</a>
                     </div>
                 </div>
                 <div id="viewpoints_santiorxo" class="level2">
                     <h1 class="sidebar-header">Miradoiro de Santiorxo</i></span></h1>
                     <div class="sidebar-data">
-                        <img src="./img/viewpoints/santiorxo.jpg" width="100%">
+                        <img src="./img/viewpoints/santiorxo.jpg" width="100%" class="principal">
 
                         <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
-                        <p><a href="javascript:showRoute()">Mostrar ruta</a></p>
+                        <ul class="options">
+                            <li><span class="icon-map-o"></span> <a href="javascript:showRoute()">Mostrar ruta</a></li>
+                            <li><span class="icon-camera"></span> <a href="#" class="button_back">Otros miradores</a></li>
+                        </ul>
 
                         <div class="jcarousel-wrapper">
                             <div class="jcarousel">
@@ -172,7 +215,6 @@
                     <span class="sidebar-close"><i class="fa fa-caret-left"></i></span>
                 </h1>
                 <div class="sidebar-data">
-                    Mostrar:
                     <section>
                         <ul class="showIcons">
                             <li><input type="checkbox" id="show_viewpoints" checked value="checked" data-label="Miradores" data-code="viewpoints" data-color="#51A3A3"></li>
