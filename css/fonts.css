@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?kl5ap9');
-  src:  url('fonts/icomoon.eot?kl5ap9#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?kl5ap9') format('truetype'),
-    url('fonts/icomoon.woff?kl5ap9') format('woff'),
-    url('fonts/icomoon.svg?kl5ap9#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?uvatlw');
+  src:  url('fonts/icomoon.eot?uvatlw#iefix') format('embedded-opentype'),
+    url('fonts/icomoon.ttf?uvatlw') format('truetype'),
+    url('fonts/icomoon.woff?uvatlw') format('woff'),
+    url('fonts/icomoon.svg?uvatlw#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,20 +24,26 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-map-o:before {
-  content: "\e902";
+.icon-camera:before {
+  content: "\e904";
 }
-.icon-map-signs:before {
+.icon-sticky-note-o:before {
   content: "\e903";
 }
-.icon-camera:before {
-  content: "\e901";
+.icon-lightbulb-o:before {
+  content: "\e902";
 }
 .icon-bed:before {
   content: "\e900";
 }
 .icon-hotel:before {
   content: "\e900";
+}
+.icon-map-signs:before {
+  content: "\e901";
+}
+.icon-map2:before {
+  content: "\e94c";
 }
 .icon-equalizer:before {
   content: "\e992";

@@ -1,9 +1,10 @@
 .leaflet-routing-container, .leaflet-routing-error {
     width: 320px;
-    background-color: white;
+    background-color: #949B96;
     padding-top: 4px;
     transition: all 0.2s ease;
     box-sizing: border-box;
+    font-size: 8pt !important;
 }
 
 .leaflet-control-container .leaflet-routing-container-hide {
@@ -12,11 +13,11 @@
 }
 
 .leaflet-routing-container h2 {
-    font-size: 14px;
+    font-size: 14pt;
 }
 
 .leaflet-routing-container h3 {
-    font-size: 12px;
+    font-size: 12pt;
     font-weight: normal;
 }
 

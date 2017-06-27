@@ -110,6 +110,12 @@ for (var i = viewpoints.length - 1; i >= 0; i--) {
 
 var sites = [
     {
+        "name" : "Oficina de Turismo",
+        "icon": "./img/info_icon.png",
+        "lat": 42.46204971576779,
+        "lon": -7.587255835533141
+    },
+    {
         "name" : "Os Muiños do Xabrega",
         "icon": "./img/xabrega_icon.png",
         "lat": 42.41889454494551,
@@ -527,9 +533,10 @@ map.on('zoomend', function() {
 function showRoute() {
     L.Routing.control({
       waypoints: [
-        L.latLng(42.393274, -7.614985),
-        L.latLng(42.397951, -7.555044)
-      ]
+        L.latLng(42.46204971576779, -7.587255835533141),
+        L.latLng(42.40786840656946, -7.568507194519042)
+      ],
+      language: 'es'
     }).addTo(map);
 }
 

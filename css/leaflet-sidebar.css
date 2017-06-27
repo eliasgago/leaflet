@@ -99,7 +99,7 @@
   right: 0;
   box-sizing: border-box;
   padding: 10px 20px;
-  height: 100%; }
+  min-height: 100%; }
   .sidebar-pane.active {
     display: block; }
   @media (min-width: 768px) and (max-width: 991px) {
@@ -287,7 +287,9 @@ h1:before{
 }
 
 .sidebar-data img.principal {
-  padding: 10px 0px;
+  margin: 10px 0px;
+  border: 3px solid white;
+  border-radius: 5px;
 }
 
 .options {
@@ -342,4 +344,8 @@ h1:before{
 
 .row {
   margin: 0px !important;
+}
+
+.notes {
+  margin-top: 60px;
 }
