@@ -116,6 +116,18 @@ var sites = [
         "lon": -7.587255835533141
     },
     {
+        "name" : "SilTrip",
+        "icon": "./img/siltrip_icon.png",
+        "lat": 42.409381446908135,
+        "lon": -7.632086277008057
+    },
+    {
+        "name" : "Catamarán",
+        "icon": "./img/catamaran_icon.png",
+        "lat": 42.4095794861362,
+        "lon": -7.444020509719849
+    },
+    {
         "name" : "Os Muiños do Xabrega",
         "icon": "./img/xabrega_icon.png",
         "lat": 42.41889454494551,
@@ -533,7 +545,7 @@ map.on('zoomend', function() {
 function showRoute() {
     L.Routing.control({
       waypoints: [
-        L.latLng(42.46204971576779, -7.587255835533141),
+        L.latLng(42.46175290530536, -7.587263882160186),
         L.latLng(42.40786840656946, -7.568507194519042)
       ],
       language: 'es'

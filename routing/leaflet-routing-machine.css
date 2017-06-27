@@ -4,12 +4,16 @@
     padding-top: 4px;
     transition: all 0.2s ease;
     box-sizing: border-box;
-    font-size: 8pt !important;
+    font-size: 10pt;
 }
 
 .leaflet-control-container .leaflet-routing-container-hide {
     width: 32px;
     height: 32px;
+}
+
+.leaflet-control-container td {
+    padding: 5px;
 }
 
 .leaflet-routing-container h2 {
@@ -56,7 +60,7 @@
 }
 
 .leaflet-routing-alt tr:hover {
-    background-color: #eee;
+    background-color: #94AB96;
     cursor: pointer;
 }
 

@@ -2222,16 +2222,16 @@ module.exports={
     "v5": {
         "constants": {
             "ordinalize": {
-                "1": "1st",
-                "2": "2nd",
-                "3": "3rd",
-                "4": "4th",
-                "5": "5th",
-                "6": "6th",
-                "7": "7th",
-                "8": "8th",
-                "9": "9th",
-                "10": "10th"
+                "1": "1ª",
+                "2": "2ª",
+                "3": "3ª",
+                "4": "4ª",
+                "5": "5ª",
+                "6": "6ª",
+                "7": "7ª",
+                "8": "8ª",
+                "9": "9ª",
+                "10": "10ª"
             },
             "direction": {
                 "north": "norte",
@@ -3865,7 +3865,7 @@ module.exports = L.Routing = {
 			itineraryClassName: '',
 			totalDistanceRoundingSensitivity: -1,
 			show: true,
-			collapsible: undefined,
+			collapsible: true,
 			collapseBtn: function(itinerary) {
 				var collapseBtn = L.DomUtil.create('span', itinerary.options.collapseBtnClass);
 				L.DomEvent.on(collapseBtn, 'click', itinerary._toggle, itinerary);
@@ -3902,6 +3902,7 @@ module.exports = L.Routing = {
 				this.options.collapseBtn(this);
 			}
 
+            console.log(this._container);
 			return this._container;
 		},
 
@@ -5346,12 +5347,6 @@ module.exports = L.Routing = {
 				return new GeocoderElement(wp, i, nWps, plan);
 			},
 			createMarker: function(i, wp) {
-				var options = {
-						draggable: this.draggableWaypoints
-					},
-				    marker = L.marker(wp.latLng, options);
-
-				return marker;
 			},
 			geocodersClassName: ''
 		},
