@@ -50,17 +50,14 @@
     width: 20px;
     height: 20px;
     text-align: center;
-    background: #4E443C;
+    background: #949B96;
     color: #fff;
     text-decoration: none;
-    text-shadow: 0 0 1px #000;
     font: 14px/17px Arial, sans-serif;
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px;
-    -webkit-box-shadow: 0 0 4px #F0EFE7;
-    -moz-box-shadow: 0 0 4px #F0EFE7;
-    box-shadow: 0 0 4px #F0EFE7;
+    text-decoration: none !important;
 }
 
 .jcarousel-control-prev {
@@ -93,24 +90,14 @@
     line-height: 10px;
 
     background: #fff;
-    color: #4E443C;
     border-radius: 10px;
     text-indent: -9999px;
 
     margin-right: 7px;
-
-
-    -webkit-box-shadow: 0 0 2px #4E443C;
-    -moz-box-shadow: 0 0 2px #4E443C;
-    box-shadow: 0 0 2px #4E443C;
 }
 
 .jcarousel-pagination a.active {
-    background: #4E443C;
+    background: #949B96;
     color: #fff;
     opacity: 1;
-
-    -webkit-box-shadow: 0 0 2px #F0EFE7;
-    -moz-box-shadow: 0 0 2px #F0EFE7;
-    box-shadow: 0 0 2px #F0EFE7;
 }
