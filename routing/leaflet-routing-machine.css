@@ -23,6 +23,7 @@
 .leaflet-routing-container h3 {
     font-size: 12pt;
     font-weight: normal;
+    text-align: center;
 }
 
 .leaflet-routing-collapsible .leaflet-routing-geocoders {

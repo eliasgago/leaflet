@@ -125,7 +125,7 @@
                         <p class="lorem">Sobre el espectacular valle del Sil, a pocos metros del Santuario de Cadeiras, se localiza un moderno mirador acondicionado para observar esta parte de A Ribeira Sacra desde donde se denomina las paredes verticales de Parada de Sil y parte del valle de Castro Caldelas. En frente tenemos también los miradores de los Balcóns dos Mouros o de Madrid. Casi 400 metros de desnivel nos separan del fondo del valle en donde veremos el río Sil embalsado por culpa del Embalse de Santo Estevo.</p>
 
                         <ul class="options">
-                            <li><span class="icon-map2"></span> <a href="javascript:showRoute()">Mostrar ruta</a></li>
+                            <li><span class="icon-map2"></span> <a href="javascript:showRoute('cadeiras')">Mostrar ruta</a></li>
                             <li><span class="icon-camera"></span> <a href="#" class="button_back">Otros miradores</a></li>
                         </ul>
 
@@ -157,7 +157,7 @@
                         <p class="lorem">En la parroquia de Santiorxo se encuentra el mirador que lleva su mismo nombre. Rodeado por un pinar nos deja entrever uno de los infinitos meandros que el Sil realiza hasta juntarse con el Miño. Acondicionado con un pequeño paseo de madera que nos lleva hasta él, durante ese trayecto tenemos varios bancos desde donde podemos comtemplar el río y los cañones que en este punto miden hasta 500m.</p>
 
                         <ul class="options">
-                            <li><span class="icon-map2"></span> <a href="javascript:showRoute()">Mostrar ruta</a></li>
+                            <li><span class="icon-map2"></span> <a href="javascript:showRoute('santiorxo')">Mostrar ruta</a></li>
                             <li><span class="icon-camera"></span> <a href="#" class="button_back">Otros miradores</a></li>
                         </ul>
 
@@ -202,9 +202,109 @@
                 <div id="lodgings_donatus" class="level2">
                     <h1 class="sidebar-header">Vila Donatus</h1>
                     <div class="sidebar-data">
-                        <img src="./img/lodgings/donatus.jpg" width="100%">
+                        <img src="./img/lodgings/donatus.jpg" class="principal" width="100%">
                         <ul class="options">
-                            <li><i class="fa fa-external-link"></i> <a href="https://www.abasacratrip.es/vila-donatus/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-globe"></span> <a href="https://www.abasacratrip.es/vila-donatus/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('donatus')">Doade 79</a></li>
+                            <li><span class="icon-phone"></span> 982 198 717 - 650 770 179</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_corona" class="level2">
+                    <h1 class="sidebar-header">Casa Corona</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/corona.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.casasgallego.com/casa-corona-la-casa/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('corona')">Casas Grandes, Millán</a></li>
+                            <li><span class="icon-phone"></span> 982 198 926 - 982 400 825 - 610 765 469</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_flores" class="level2">
+                    <h1 class="sidebar-header">Casa das Flores</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/flores.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.casasgallego.com/casa-corona-la-casa/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('flores')">Mer, Proendos</a></li>
+                            <li><span class="icon-phone"></span> 982 460 369</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_estevo" class="level2">
+                    <h1 class="sidebar-header">Casa do Estevo</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/estevo.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.casadoestevo.com/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('estevo')">Francos, Doade</a></li>
+                            <li><span class="icon-phone"></span> 982 410 384 - 617 825 105</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_rio_sil" class="level2">
+                    <h1 class="sidebar-header">Apartamentos Río Sil</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/rio_sil.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.riosil.es/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('rio_sil')">Ferrón 54, Bolmente</a></li>
+                            <li><span class="icon-phone"></span> 697 555 515</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_madrina" class="level2">
+                    <h1 class="sidebar-header">Casa da Madriña</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/madrina.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.casasgallego.com/casa-de-la-madrina-la-casa/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('madrina')">Camporrairo, Canabal</a></li>
+                            <li><span class="icon-phone"></span> 610 765 469</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_anllo" class="level2">
+                    <h1 class="sidebar-header">Rectoral de Anllo</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/anllo.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.rectoraldeanllo.com/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('anllo')">Mogueira 68, Anllo</a></li>
+                            <li><span class="icon-phone"></span> 982 460 039</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_rosende" class="level2">
+                    <h1 class="sidebar-header">Casa Grande de Rosende</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/rosende.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://casagrandederosende.com/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('rosende')">Rosende</a></li>
+                            <li><span class="icon-phone"></span> 982 460 627</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_ruperto" class="level2">
+                    <h1 class="sidebar-header">Casa Ruperto</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/ruperto.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-globe"></span> <a href="http://www.casaruperto.es/" target="_blank">Visitar web</a></li>
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('ruperto')">Doade 45</a></li>
+                            <li><span class="icon-phone"></span> 660 571 140 - 666 464 557</li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="lodgings_solveira" class="level2">
+                    <h1 class="sidebar-header">Casa Rural Solveira</h1>
+                    <div class="sidebar-data">
+                        <img src="./img/lodgings/solveira.jpg" class="principal" width="100%">
+                        <ul class="options">
+                            <li><span class="icon-map-signs"></span><a href="javascript:showRoute('solveira')">O Piñeiro, Bolmente</a></li>
+                            <li><span class="icon-phone"></span> 647 583 325</li>
                         </ul>
                     </div>
                 </div>

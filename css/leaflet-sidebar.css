@@ -349,3 +349,12 @@ h1:before{
 .notes {
   margin-top: 60px;
 }
+
+.leaflet-marker-icon {
+  border-radius: 50%;
+}
+
+.icon-active {
+  padding: 1px;
+  border: 2px dotted white;
+}

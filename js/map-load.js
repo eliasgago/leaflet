@@ -77,13 +77,15 @@ var viewpoints = [
 ]
 
 function show(e) {
-    console.log(e.target.options.markerId);
-    var markerId = e.target.options.markerId;
-    var type = e.target.options.type;
+    var marker = e.target;
+    var markerId = marker.options.markerId;
+    var type = marker.options.type;
     sidebar.open(type);
     $('.level1').hide();
     $('.level2').hide();
     $('#' + markerId).show(1000);
+    $('.icon-active').removeClass('icon-active');
+    $(marker._icon).addClass('icon-active');
 }
 
 var viewpointsIcon = L.icon({
@@ -110,24 +112,28 @@ for (var i = viewpoints.length - 1; i >= 0; i--) {
 
 var sites = [
     {
+        "id": "oficina",
         "name" : "Oficina de Turismo",
         "icon": "./img/info_icon.png",
         "lat": 42.46204971576779,
         "lon": -7.587255835533141
     },
     {
+        "id": "siltrip",
         "name" : "SilTrip",
         "icon": "./img/siltrip_icon.png",
         "lat": 42.409381446908135,
         "lon": -7.632086277008057
     },
     {
+        "id": "catamaran",
         "name" : "Catamarán",
         "icon": "./img/catamaran_icon.png",
         "lat": 42.4095794861362,
         "lon": -7.444020509719849
     },
     {
+        "id": "xabrega",
         "name" : "Os Muiños do Xabrega",
         "icon": "./img/xabrega_icon.png",
         "lat": 42.41889454494551,
@@ -141,12 +147,14 @@ var sites = [
         "lon": -7.586199045181274
     },
     {
+        "id": "gundivos",
         "name" : "Centro Oleiro Rectoral de Gundivós",
         "icon": "./img/gundivos_icon.png",
         "lat": 42.446261403946686,
         "lon": -7.5407034158706665
     },
     {
+        "id": "lobios",
         "name" : "Igrexa de San Xillao de Lobios",
         "icon": "./img/lobios_icon.png",
         "lat": 42.40813774626316,
@@ -542,14 +550,43 @@ map.on('zoomend', function() {
 
 // marker.bindPopup("<b>Miradoiro da Cividade!</b><br>Vaia vistas!");
 
-function showRoute() {
-    L.Routing.control({
+function find(id){
+    for (var i = viewpoints.length - 1; i >= 0; i--) {
+        if(viewpoints[i].id == id){
+            return viewpoints[i];
+        }
+    }
+    for (var i = sites.length - 1; i >= 0; i--) {
+        if(sites[i].id == id){
+            return sites[i];
+        }
+    }
+    for (var i = lodgings.length - 1; i >= 0; i--) {
+        if(lodgings[i].id == id){
+            return lodgings[i];
+        }
+    }
+    for (var i = wineries.length - 1; i >= 0; i--) {
+        if(wineries[i].id == id){
+            return wineries[i];
+        }
+    }
+}
+
+var route = null;
+function showRoute(destinationId) {
+    var destination = find(destinationId);
+    if(route){
+        map.removeControl(route);   
+    }
+    route = L.Routing.control({
       waypoints: [
         L.latLng(42.46175290530536, -7.587263882160186),
-        L.latLng(42.40786840656946, -7.568507194519042)
+        L.latLng(destination.lat, destination.lon)
       ],
       language: 'es'
-    }).addTo(map);
+    });
+    route.addTo(map);
 }
 
 $('.level2').hide();
@@ -560,6 +597,7 @@ $(document).on("click", ".link", function (e) {
     $('.level1').hide(1000);
     $('.level2').hide(1000);
     $(id).show(1000);
+    //marker._icon.classList.add("className");
 });
 
 $(document).on("click", ".button_back", function () {
