@@ -145,11 +145,32 @@ var sites = [
         "lon": -7.630434036254883
     },
     {
+        "id": "sites_canabal",
+        "name" : "Igrexa de San Pedro de Canabal",
+        "icon": "./img/iglesia_icon.png",
+        "lat": 42.48237788307621,
+        "lon": -7.585777938365935
+    },
+    {
         "id": "sites_proendos",
         "name" : "Petroglifos de Proendos",
         "icon": "./img/proendos_icon.png",
-        "lat": 42.452262143758645,
-        "lon": -7.586199045181274
+        "lat": 42.45169217735101,
+        "lon": -7.583417594432831
+    },
+    {
+        "id": "sites_bolmente",
+        "name" : "Igrexa de Santa María de Bolmente",
+        "icon": "./img/iglesia_icon.png",
+        "lat": 42.4224269349809,
+        "lon": -7.589288949966431
+    },
+    {
+        "id": "sites_pinol",
+        "name" : "Igrexa de San Vicente de Pinol",
+        "icon": "./img/iglesia_icon.png",
+        "lat": 42.405899815164204,
+        "lon": -7.549495697021484
     },
     {
         "id": "sites_gundivos",
@@ -161,7 +182,7 @@ var sites = [
     {
         "id": "sites_lobios",
         "name" : "Igrexa de San Xillao de Lobios",
-        "icon": "./img/lobios_icon.png",
+        "icon": "./img/iglesia_icon.png",
         "lat": 42.40813774626316,
         "lon": -7.530913352966309
     }
