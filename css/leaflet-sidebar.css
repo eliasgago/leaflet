@@ -127,7 +127,7 @@
   margin: 0px;
   padding: 0 20px;
   line-height: 40px;
-  font-size: 22pt;
+  font-size: 19pt;
   color: #fff;
   text-align: center;}
 
@@ -146,16 +146,17 @@ h1:before{
     border-bottom: 1px solid white;
 }
 
-.sidebar-close {
+.sidebar-close, .sidebar-back {
   position: absolute;
-  top: 0;
+  font-size: 16pt;
+  top: 8px;
   width: 40px;
   height: 40px;
   text-align: center;
   cursor: pointer; }
-  .sidebar-left .sidebar-close {
+  .sidebar-left .sidebar-close, .sidebar-left .sidebar-back {
     right: 0; }
-  .sidebar-right .sidebar-close {
+  .sidebar-right .sidebar-close, .sidebar-right .sidebar-back {
     left: 0; }
 
 .sidebar-left ~ .sidebar-map {
@@ -272,18 +273,18 @@ h1:before{
   height: 140px;
 }
 
+.sidebar-pane-detail a {
+  color: #fff;
+  text-decoration: underline;
+}
+.sidebar-pane-detail a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
 .sidebar-data {
   padding-top: 20px;
   margin: 10px;
-}
-
-.sidebar-data a {
-  color: #fff;
-  text-decoration: underline;
-}
-.sidebar-data a:hover {
-  color: #fff;
-  text-decoration: underline;
 }
 
 .sidebar-data img.principal {
@@ -357,4 +358,15 @@ h1:before{
 .icon-active {
   padding: 1px;
   border: 2px dotted white;
+}
+
+.sidebar-pane-detail {
+  display: none;
+ }
+.sidebar-pane-detail.active {
+  display: block;
+}
+
+a.sidebar-back, a.sidebar-close, a.sidebar-back:hover, a.sidebar-close:hover {
+  text-decoration: none;
 }
