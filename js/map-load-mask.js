@@ -1,8 +1,8 @@
 L.Mask = L.Polygon.extend({
   options: {
     stroke: false,
-    color: '#333',
-    fillOpacity: 0.4,
+    color: '#52a3a3',
+    fillOpacity: 0.1,
     clickable: true,
 
     outerBounds: new L.LatLngBounds([-180, -360], [90, 360])
