@@ -1,7 +1,7 @@
 var mapboxKey = 'https://api.mapbox.com/styles/v1/eliasgago/cj4i5ei8s5swd2ss6awluycmx/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw';
 var mapboxToken = 'pk.eyJ1IjoiZWxpYXNnYWdvIiwiYSI6ImNqM3ZtbDlheTAwMG8zMW8wYzNocGVzcXcifQ.3Ex1pscNCyDO4Pdq3uIqLw';
 var initialPoint = [42.438862, -7.531178];
-var initialZoom = 13;
+var initialZoom = 12;
 
 var map = L.map('map').setView(initialPoint, initialZoom);
 
@@ -39,6 +39,40 @@ function show(e) {
     console.log(marker._tooltip);
 }
 
+function getIcon(layerGroupCode){
+    if(layerGroupCode == 'viewpoints'){
+        return './img/view_icon.png';
+    }else if(layerGroupCode == 'sites'){
+        return './img/sites_icon.png';
+    }else if(layerGroupCode == 'lodgings'){
+        return './img/lodgings_icon.png';
+    }else if(layerGroupCode == 'wineries'){
+        return './img/wineries_icon.png';
+    }
+}
+
+function bindIcon(marker, mapElement) {
+    var icon = L.icon({
+        iconUrl: getIcon(marker.options.type),
+        iconSize: [30, 30],
+        iconAnchor: [20, 20],
+        popupAnchor: [-3, -76]
+    });
+
+    if(mapElement.icon){
+        var itselfIcon = L.icon({
+            iconUrl: mapElement.icon,
+            iconSize: [30, 30],
+            iconAnchor: [20, 20],
+            popupAnchor: [-3, -76]
+        });
+        marker.setIcon(itselfIcon);
+    }else{
+        marker.setIcon(icon);   
+    }
+    $(marker._icon).addClass(marker.options.type);
+}
+
 function getTooltipPositionPoint(tooltipPosition){
 
     var topBottomPoint = 15;
@@ -69,16 +103,6 @@ function bindTooltip(marker, mapElement, mapElementType) {
         direction: 'right'
     });
 }
-
-var myIcon2 = L.icon({
-    iconUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-icon-2x.png',
-    iconSize: [70, 95],
-    iconAnchor: [22, 94],
-    popupAnchor: [-3, -76],
-    shadowUrl: 'https://unpkg.com/leaflet@1.0.3/dist/images/marker-shadow.png',
-    shadowSize: [68, 95],
-    shadowAnchor: [22, 94]
-});
 
 var viewpoints = [
     {
@@ -162,13 +186,6 @@ var viewpoints = [
     }
 ]
 
-var viewpointsIcon = L.icon({
-    iconUrl: './img/view_icon.png',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
-
 var viewpointsMarkers = [];
 
 for (var i = viewpoints.length - 1; i >= 0; i--) {
@@ -177,18 +194,7 @@ for (var i = viewpoints.length - 1; i >= 0; i--) {
         type: 'viewpoints'
     };
     var marker = L.marker([viewpoints[i].lat, viewpoints[i].lon], options).addTo(map);
-    if(viewpoints[i].icon){
-        var itselfIcon = L.icon({
-            iconUrl: viewpoints[i].icon,
-            iconSize: [40, 40],
-            iconAnchor: [20, 20],
-            popupAnchor: [-3, -76]
-        });
-        marker.setIcon(itselfIcon);
-    }else{
-        marker.setIcon(viewpointsIcon);   
-    }
-    $(marker._icon).addClass(options.type);
+    bindIcon(marker, viewpoints[i]);
     bindTooltip(marker, viewpoints[i]);
     marker.setZIndexOffset(300);
     marker.on('click', show);
@@ -262,13 +268,6 @@ var sites = [
     }
 ]
 
-var sitesIcon = L.icon({
-    iconUrl: './img/sites_icon.png',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
-
 var sitesMarkers = [];
 
 for (var i = sites.length - 1; i >= 0; i--) {
@@ -277,18 +276,7 @@ for (var i = sites.length - 1; i >= 0; i--) {
         type: 'sites'
     };
     var marker = L.marker([sites[i].lat, sites[i].lon], options).addTo(map);
-    if(sites[i].icon){
-        var itselfIcon = L.icon({
-            iconUrl: sites[i].icon,
-            iconSize: [40, 40],
-            iconAnchor: [20, 20],
-            popupAnchor: [-3, -76]
-        });
-        marker.setIcon(itselfIcon);
-    }else{
-        marker.setIcon(sitesIcon);   
-    }
-    $(marker._icon).addClass(options.type);
+    bindIcon(marker, sites[i]);
     bindTooltip(marker, sites[i]);
     marker.setZIndexOffset(400);
     marker.on('click', show);
@@ -368,13 +356,6 @@ var lodgings = [
     }
 ]
 
-var lodgingsIcon = L.icon({
-    iconUrl: './img/lodgings_icon.png',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
-
 var lodgingsMarkers = [];
 
 for (var i = lodgings.length - 1; i >= 0; i--) {
@@ -383,8 +364,7 @@ for (var i = lodgings.length - 1; i >= 0; i--) {
         type: 'lodgings'
     };
     var marker = L.marker([lodgings[i].lat, lodgings[i].lon], options).addTo(map);
-    marker.setIcon(lodgingsIcon);
-    $(marker._icon).addClass(options.type);
+    bindIcon(marker, lodgings[i]);
     bindTooltip(marker, lodgings[i]);
     marker.setZIndexOffset(200);
     marker.on('click', show);
@@ -593,13 +573,6 @@ var wineries = [
     }
 ];
 
-var wineriesIcon = L.icon({
-    iconUrl: './img/wineries_icon.png',
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-    popupAnchor: [-3, -76]
-});
-
 var wineriesMarkers = [];
 
 for (var i = wineries.length - 1; i >= 0; i--) {
@@ -608,8 +581,8 @@ for (var i = wineries.length - 1; i >= 0; i--) {
         type: 'wineries'
     };
     var marker = L.marker([wineries[i].lat, wineries[i].lon], options).addTo(map);
-    marker.setIcon(wineriesIcon);
-    $(marker._icon).addClass(options.type);
+    bindIcon(marker, wineries[i]);
+    bindTooltip(marker, wineries[i]);
     marker.setZIndexOffset(100);
     marker.on('click', show);
     wineriesMarkers.push(marker);
